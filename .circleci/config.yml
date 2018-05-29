@@ -1,5 +1,5 @@
 defaults: &defaults
-  working_directory: ~/mern-starter
+  working_directory: ~/circleci-demo-javascript-express
   docker:
       - image: circleci/node:10.1
       - image: mongo:3.4.4
