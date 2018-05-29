@@ -25,6 +25,9 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - checkout
+      - restore_cache
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: test
           command: npm test
