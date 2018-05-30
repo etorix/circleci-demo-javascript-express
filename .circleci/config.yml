@@ -34,8 +34,8 @@ jobs:
                    sudo npm install tap-xunit -g
                    npm install cross-env
       - run:
-          name: test with TAP
-          command: npm test | tap-xunit
+          name: test
+          command: npm test
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
