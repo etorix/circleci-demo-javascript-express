@@ -25,18 +25,24 @@ jobs:
           key: v4-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-  test:
+  test_with_ava:
     <<: *defaults
     steps:
       - checkout
       - restore_cache:
           key: v4-dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: test
-          command: npm test
+          name: install TAP
+          command: npm install tap-xunit -g
+      - run:
+          name: test with TAP
+          command: npm test | tap-xunit
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - run:
+          name: XMLify results
+          command: cat results.tap | tap-xunit > test-results.xml
       - store_artifacts:
           path: test-results.xml
           prefix: tests
@@ -51,4 +57,4 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test
+      - test_with_ava
