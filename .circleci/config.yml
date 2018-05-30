@@ -29,6 +29,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: install crossenv
+          command: npm install cross-env
+      - run:
           name: test
           command: npm test
       - run:
