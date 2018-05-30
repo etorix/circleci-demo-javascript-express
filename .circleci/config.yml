@@ -26,8 +26,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          key: v5-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install TAP and cross-env
           command: |
@@ -56,4 +54,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test_with_ava
+      - test_with_ava:
+          requires:
+            - build
