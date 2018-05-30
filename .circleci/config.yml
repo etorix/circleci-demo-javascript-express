@@ -43,7 +43,7 @@ jobs:
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
       - run:
           name: XMLify results
-          command: cat results.tap | tap-xunit > test-results.xml
+          command: cat results.xml | tap-xunit > test-results.xml
       - store_artifacts:
           path: test_results.xml
           prefix: tests
