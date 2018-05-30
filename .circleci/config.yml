@@ -14,14 +14,15 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@5'
       - restore_cache:
-          key: v5-dependency-cache-{{ checksum "package.json" }}
+          key: v6-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
-          key: v5-dependency-cache-{{ checksum "package.json" }}
+          key: v6-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+
   test_with_ava:
     <<: *defaults
     steps:
@@ -54,6 +55,4 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test_with_ava:
-          requires:
-            - build
+      - test_with_ava
