@@ -14,7 +14,7 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@5'
       - restore_cache:
-          key: v4-dependency-cache-{{ checksum "package.json" }}
+          key: v5-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
@@ -22,7 +22,7 @@ jobs:
           name: install cross-env
           command: npm i cross-env
       - save_cache:
-          key: v4-dependency-cache-{{ checksum "package.json" }}
+          key: v5-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
   test_with_ava:
@@ -30,10 +30,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v4-dependency-cache-{{ checksum "package.json" }}
+          key: v5-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install TAP
-          command: npm install tap-xunit -g
+          command: sudo npm install tap-xunit -g
       - run:
           name: test with TAP
           command: npm test | tap-xunit
