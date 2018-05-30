@@ -30,6 +30,7 @@ jobs:
       - run:
           name: install TAP and cross-env
           command: |
+                   sudo npm install -g npm@5
                    sudo npm install tap-xunit -g
                    npm install cross-env
       - run:
