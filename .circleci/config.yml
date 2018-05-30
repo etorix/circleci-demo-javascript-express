@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/circleci-demo-javascript-express
   docker:
-      - image: circleci/node:6
+      - image: circleci/node:4.8.2
       - image: mongo:3.4.4
 
 version: 2
@@ -14,12 +14,12 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: v3-dependency-cache-{{ checksum "package.json" }}
+          key: v4-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
-          key: v3-dependency-cache-{{ checksum "package.json" }}
+          key: v4-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
