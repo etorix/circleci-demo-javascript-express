@@ -18,9 +18,6 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install
-      - run:
-          name: install cross-env
-          command: npm i cross-env
       - save_cache:
           key: v5-dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -32,8 +29,10 @@ jobs:
       - restore_cache:
           key: v5-dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: install TAP
-          command: sudo npm install tap-xunit -g
+          name: install TAP and cross-env
+          command: |
+                   sudo npm install tap-xunit -g
+                   npm install cross-env
       - run:
           name: test with TAP
           command: npm test | tap-xunit
