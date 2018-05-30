@@ -24,7 +24,7 @@ jobs:
             - ./node_modules
   test:
     <<: *defaults
-     steps:
+    steps:
       - checkout
       - run:
           name: test
