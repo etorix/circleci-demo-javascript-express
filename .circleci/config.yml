@@ -14,7 +14,7 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@5'
       - restore_cache:
-          key: v7-dependency-cache-{{ checksum "package.json" }}
+          key: v8-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v7-dependency-cache-{{ checksum "package.json" }}
+          key: v8-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install TAP and cross-env
           command: |
@@ -42,9 +42,6 @@ jobs:
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
-      - run:
-          name: XMLify results
-          command: cat ~/circleci-demo-javascript-express/results.xml | tap-xunit
       - store_artifacts:
           path: ~/reports/test_results.xml
           prefix: tests
