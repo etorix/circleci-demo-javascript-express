@@ -14,12 +14,12 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@5'
       - restore_cache:
-          key: v12-dependency-cache-{{ checksum "package.json" }}
+          key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
-          key: v12-dependency-cache-{{ checksum "package.json" }}
+          key: v13-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
 
@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v12-dependency-cache-{{ checksum "package.json" }}
+          key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install TAP and cross-env
           command: |
