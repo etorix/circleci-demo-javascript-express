@@ -33,13 +33,13 @@ jobs:
           name: install TAP and cross-env
           command: |
                    mkdir -p ~/javascript-express/reports
-                   mkdir -p ~/javascript-express/reports/tests
+                   mkdir -p ~/javascript-express/reports/ava
                    sudo npm install -g npm@5
                    sudo npm install tap-xunit -g
                    npm install cross-env
       - run:
           name: test
-          command: npm test | tap-xunit > ~/javascript-express/reports/tests/reports.xml
+          command: npm test | tap-xunit > ~/javascript-express/reports/ava/reports.xml
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
