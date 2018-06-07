@@ -25,6 +25,7 @@ jobs:
 
   test_with_ava:
     <<: *defaults
+    parallelism: 2    
     steps:
       - checkout
       - restore_cache:
@@ -34,6 +35,7 @@ jobs:
           command: |
                    mkdir -p ~/javascript-express/reports
                    mkdir -p ~/javascript-express/reports/ava
+                   mkdir -p ~/javascript-express/artifacts
                    sudo npm install -g npm@5
                    sudo npm install tap-xunit -g
                    npm install cross-env
@@ -44,10 +46,10 @@ jobs:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
       - store_artifacts:
-          path: ~/javascript-express/reports/test_results.xml
+          path: ~/javascript-express/artifacts/test_results.xml
           prefix: tests
       - store_artifacts:
-          path: ~/javascript-express/reports/coverage
+          path: ~/javascript-express/artifacts/coverage
           prefix: coverage
       - store_test_results:
           path: ~/javascript-express/reports
