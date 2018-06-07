@@ -17,7 +17,11 @@ jobs:
           key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: npm install
+          command: npm install 
+      - persist_to_workspace
+          root: ~/javascript-express
+          paths:
+            - client
       - save_cache:
           key: v13-dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -56,6 +60,9 @@ jobs:
 workflows:
   version: 2
   build_and_test:
+    triggers:
+      - schedule:
+          cron: "0 15 * * *"
     jobs:
       - build
       - test_with_ava
