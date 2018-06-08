@@ -14,8 +14,11 @@ jobs:
           name: update-npm
           command: sudo npm install -g npm@5
       - run:
-          name: mkdir
-          command: mkdir -p ~/javascript-express/workspace
+          name: mkdir and cp client
+          command: |
+                   mkdir -p ~/javascript-express/workspace
+                   mkdir -p ~/javascript-express/workspace/client
+                   cp -a ./client/* ./workspace/client/
       - restore_cache:
           key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
