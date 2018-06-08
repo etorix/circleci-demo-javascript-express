@@ -1,0 +1,9 @@
+circleci-demo-javascript-express/client/util/__tests__/*.js
+circleci-demo-javascript-express/client/modules/App/__tests__/*.js
+circleci-demo-javascript-express/client/modules/App/__tests__/Components/*.js
+circleci-demo-javascript-express/client/modules/Intl/__tests__/*.js
+circleci-demo-javascript-express/client/modules/Post/__tests__/*.js
+circleci-demo-javascript-express/client/modules/Post/__tests__/components/*.js
+circleci-demo-javascript-express/server/models/__tests__/*.js
+circleci-demo-javascript-express/server/models/__tests__/*.js
+
