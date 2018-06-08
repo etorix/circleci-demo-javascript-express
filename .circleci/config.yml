@@ -11,15 +11,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@5'
+          name: update-npm and create workspace dir
+          command: |
+                   'sudo npm install -g npm@5'
+                   'sudo mkdir -p ~/javascript-express/workspace'
       - restore_cache:
           key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install 
       - persist_to_workspace
-          root: ~/javascript-express
+          root: workspace
           paths:
             - client
       - save_cache:
