@@ -11,8 +11,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm and create workspace dir
+          name: update-npm
           command: sudo npm install -g npm@5
+      - run:
+          name: mkdir
+          command: mkdir -p ~/javascript-express/workspace
       - restore_cache:
           key: v13-dependency-cache-{{ checksum "package.json" }}
       - run:
