@@ -20,7 +20,7 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install 
-      - persist_to_workspace
+      - persist_to_workspace:
           root: workspace
           paths:
             - client
