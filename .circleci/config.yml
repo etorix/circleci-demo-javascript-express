@@ -59,7 +59,7 @@ jobs:
           path: ~/javascript-express/reports
 workflows:
   version: 2
-   nightly:
+  nightly:
     triggers:
       - schedule:
           cron: "0 15 * * *"
@@ -70,7 +70,7 @@ workflows:
     jobs:
       - build
       - test_with_ava
-   build_and_test:
+  build_and_test:
      jobs:
        - build
        - test_with_ava
