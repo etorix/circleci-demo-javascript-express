@@ -64,7 +64,7 @@ jobs:
       - store_test_results:
           path: ~/javascript-express/reports
 workflows:
-  version: 2
+  version: 2.1
   nightly:
     triggers:
       - schedule:
